@@ -2,17 +2,31 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sushiman/Data/Model/FoodModel.dart';
 
-class FoodTile extends StatelessWidget {
+import '../Data/Model/Shop.dart';
+
+class FoodTile extends StatefulWidget {
   final Food food;
   final Function()? onTap;
   const FoodTile({super.key, required this.food, required this.onTap});
 
   @override
+  State<FoodTile> createState() => _FoodTileState();
+}
+
+class _FoodTileState extends State<FoodTile> {
+  bool liked = false;
+  void addtoLike() {
+    final shop = context.read<Shop>();
+    shop.LikeItems.add(widget.food);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: widget.onTap,
       child: Container(
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.only(left: 25, top: 10, bottom: 10),
@@ -22,15 +36,28 @@ class FoodTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Like
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 130,
                 ),
-                Icon(
-                  Icons.favorite_border,
-                  size: 30,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      liked = !liked;
+                      addtoLike();
+                    });
+                  },
+                  child: liked == true
+                      ? const Icon(
+                          Icons.favorite,
+                          size: 30,
+                        )
+                      : const Icon(
+                          Icons.favorite_border,
+                          size: 30,
+                        ),
                 ),
               ],
             ),
@@ -40,7 +67,7 @@ class FoodTile extends StatelessWidget {
 
             //Image
             Image.asset(
-              food.imgpath,
+              widget.food.imgpath,
               width: 140,
             ),
 
@@ -50,7 +77,7 @@ class FoodTile extends StatelessWidget {
 
             //text
             Text(
-              food.name,
+              widget.food.name,
               style: GoogleFonts.dmSerifDisplay(fontSize: 24),
             ),
 
@@ -65,7 +92,7 @@ class FoodTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Rs. ${food.price}",
+                    "Rs. ${widget.food.price}",
                     style: GoogleFonts.dmSerifDisplay(fontSize: 20),
                   ),
                   const SizedBox(
@@ -81,7 +108,7 @@ class FoodTile extends StatelessWidget {
                         color: Color.fromARGB(255, 236, 220, 73),
                       ),
                       Text(
-                        food.rating,
+                        widget.food.rating,
                         style: GoogleFonts.dmSerifDisplay(fontSize: 20),
                       )
                     ],

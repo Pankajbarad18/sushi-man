@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sushiman/CartPage.dart';
-import 'package:sushiman/Data/Shop.dart';
-import 'package:sushiman/HomePage.dart';
-import 'package:sushiman/InitialPage.dart';
+import 'package:sushiman/Screens/CartPage.dart';
+import 'package:sushiman/Data/Model/Shop.dart';
+import 'package:sushiman/Screens/HomePage.dart';
+import 'package:sushiman/Screens/InitialPage.dart';
+import 'package:sushiman/Screens/LikePage.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -28,7 +29,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         'InitialPage': (context) => const InitialPage(),
         'HomePage': (context) => const HomePage(),
-        'CartPage': (context) => const CartPage()
+        'CartPage': (context) => const CartPage(),
+        'LikePage': (context) => const LikePage()
       },
     );
   }

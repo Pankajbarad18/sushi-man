@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sushiman/Constants.dart';
+import 'package:sushiman/Widgets/Constants.dart';
 
 class MyButton extends StatelessWidget {
   final String btntext;

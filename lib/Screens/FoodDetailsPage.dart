@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sushiman/Components/MyButton.dart';
-import 'package:sushiman/Constants.dart';
+import 'package:sushiman/Widgets/Constants.dart';
 import 'package:sushiman/Data/Model/FoodModel.dart';
-import 'package:sushiman/Data/Shop.dart';
+import 'package:sushiman/Data/Model/Shop.dart';
 
 class FoodDetailPage extends StatefulWidget {
   final Food food;

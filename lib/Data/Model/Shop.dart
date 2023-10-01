@@ -31,9 +31,13 @@ class Shop extends ChangeNotifier {
   //cart list
   List<Food> _cartItems = [];
 
+  //Like Food
+  List<Food> _likeItems = [];
+
   //getters
   List<Food> get FoodItems => _foodItems;
   List<Food> get CartItems => _cartItems;
+  List<Food> get LikeItems => _likeItems;
 
   //add to cart
   void addToCart(Food food, int q) {
@@ -43,9 +47,21 @@ class Shop extends ChangeNotifier {
     notifyListeners();
   }
 
-  //remove to cart
+  //remove from cart
   void removeFromCart(Food food) {
     _cartItems.remove(food);
+    notifyListeners();
+  }
+
+  //add to Like
+  void addToLike(Food food) {
+    _likeItems.add(food);
+    notifyListeners();
+  }
+
+  //remove from Like
+  void removeFromLike(Food food) {
+    _likeItems.remove(food);
     notifyListeners();
   }
 }

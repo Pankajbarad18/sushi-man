@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sushiman/Components/MyButton.dart';
-import 'package:sushiman/Constants.dart';
-import 'package:sushiman/Data/Shop.dart';
+import 'package:sushiman/Widgets/Constants.dart';
+import 'package:sushiman/Data/Model/Shop.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -24,7 +24,7 @@ class _CartPageState extends State<CartPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: Colors.white,
-        title: Center(child: Text("Cart Page")),
+        title: const Center(child: Text("Cart Page")),
       ),
       body: Column(
         children: [

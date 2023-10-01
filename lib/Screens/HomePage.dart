@@ -6,13 +6,18 @@ import 'package:provider/provider.dart';
 import 'package:sushiman/Components/Foodtile.dart';
 import 'package:sushiman/Components/MyButton.dart';
 import 'package:sushiman/Components/PopularfoodTile.dart';
-import 'package:sushiman/Constants.dart';
-import 'package:sushiman/Data/Shop.dart';
-import 'package:sushiman/FoodDetailsPage.dart';
+import 'package:sushiman/Widgets/Constants.dart';
+import 'package:sushiman/Data/Model/Shop.dart';
+import 'package:sushiman/Screens/FoodDetailsPage.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final shop = context.read<Shop>();
@@ -46,8 +51,11 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
+              onPressed: () => Navigator.pushNamed(context, 'LikePage'),
+              icon: const Icon(Icons.favorite_border)),
+          IconButton(
               onPressed: () => Navigator.pushNamed(context, 'CartPage'),
-              icon: const Icon(Icons.shopping_cart_outlined))
+              icon: const Icon(Icons.shopping_cart_outlined)),
         ],
       ),
       body: Column(
